@@ -1,0 +1,40 @@
+<div class="container">
+
+  <h2>My information</h2>
+  <div ng-if="info.signedUp">
+    <div class="row">
+      <div class="col-md-6">
+        <p>First name: {{ info.firstName }}</p>
+        <p>Last name: {{ info.lastName }}</p>
+        <p>E-mail address: {{ info.email }}</p>
+        <p>Phone number: {{ info.phone }}</p>
+      </div>
+      <div class="col-md-6">
+        <h3>Favorite dish</h3>
+        <div ng-if="info.favoriteDishItem">
+          <img
+          ng-src="images/menu/{{ info.favoriteDishItem.category_short_name }}/{{ info.favoriteDishItem.category_short_name }}.jpg" class="pull-right">
+          <h4>{{ info.favoriteDishItem.name }} [{{ info.favoriteDish }}]</h4>
+          <p>{{ info.favoriteDishItem.description }}</p>
+        </div>
+        <div ng-show="!info.favoriteDishItem">
+          <p>(You entered an invalid short name for your favorite dish when signing up.)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="!info.signedUp">
+    <p>Not Signed Up Yet.</p>
+    <p><a ui-sref="public.signup" class="btn btn-warning">Sign up Now!</a></p>
+  </div>
+
+  <div class="alert alert-warning">
+    <p>This page should show signed up user's information. To sign up for
+    (fake) newsletter, click button Sign up Now! above or click menu option
+    Sign up.</p>
+    <p>Signing up only saves information to "page's" memory, i.e. if you reload
+      page in browser the data will be forgotten.</p>
+  </div>
+
+</div>
